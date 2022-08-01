@@ -1,0 +1,112 @@
+body {
+    background: var(--menu-white);
+    font-family: 'Lexend Exa', sans-serif;
+    /*Menu vars*/
+    --menu-white:#F9F8FD;
+    --menu-nav-border: #EBECF1;
+    --menu-a-color: var(--menu-white);/*#2375D8;*/
+    --menu-sub-a-bgcolor: #67c0e7;
+    --menu-sub-a-color: white;
+    --menu-sub-a-border: #F7C833;
+    --menu-sub-a-border-rb: #F89329;
+    --menu-sub-hover-background: #EC4138;
+    --menu-sub-hover-border: #F05749;
+    --menu-sub-hover-border-br: #E02A21;
+    --menu-a-hover: #44178e
+
+}
+.menu {
+  position: sticky;
+  top: 15px;
+  left: 0%;
+  transform: translateX(0%);
+  display: inline-block;
+  border: 2px solid var(--menu-nav-border);
+  border-radius: 30px;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+
+  /*animation: slide-in 1s ease-out;*/
+}
+.menu ul {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0 30px;
+  list-style-type: none;
+}
+.menu ul li:not(:last-child) {
+  margin-right: 40px;
+}
+.menu ul li {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background 0.2s;
+}
+.menu ul li a {
+  color: var(--menu-a-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  cursor: default;
+  user-select: none;
+}
+.menu ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  display: block;
+  margin: 12px -12px;
+  padding: 0;
+  /*background: var(--menu-sub-a-bgcolor);*/
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: none;
+  /*border: 2px solid var(--menu-sub-a-border);
+  border-right: 2px solid var(--menu-sub-a-border-rb);
+  border-bottom: 2px solid var(--menu-sub-a-border-rb);*/
+  border-radius: 5px;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.menu ul li ul li {
+  margin: -2px 0 0 -2px;
+  width: calc(100% - 20px);
+  line-height: 1.7;
+}
+.menu ul li ul li a {
+  color: var(--menu-a-color);
+}
+.menu ul li:hover {
+  /* background: var(--menu-sub-hover-background);
+  border: 2px solid var(--menu-sub-hover-border);
+  border-right: 2px solid var(--menu-sub-hover-border-br);
+  border-bottom: 2px solid var(--menu-sub-hover-border-br); */
+  
+
+}
+.menu ul li:hover a {
+  /* color: var(--menu-white); */
+  color: var(--menu-a-hover)
+}
+.menu ul li:hover ul {
+  visibility: visible;
+  opacity: 1;
+  box-shadow: 0px 3px 5px 2px var(--menu-nav-border);
+}
+.menu ul li:hover ul li a {
+  color: var(--menu-white);
+}
+@keyframes slide-in {
+  0% {
+    top: -50px;
+  }
+  40% {
+    top: 20px;
+  }
+  70% {
+    top: 10px;
+  }
+  100% {
+    top: 15px;
+  }
+}
