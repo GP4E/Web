@@ -1,6 +1,7 @@
 body {
     background: var(--menu-white);
     font-family: 'Lexend Exa', sans-serif;
+    overflow-x: hidden;
     /*Menu vars*/
     --menu-white:#F9F8FD;
     --menu-nav-border: #EBECF1;
@@ -19,6 +20,7 @@ body {
   position: sticky;
   top: 15px;
   left: 0%;
+  width: 100vh;
   transform: translateX(0%);
   display: inline-block;
   border: 2px solid var(--menu-nav-border);
