@@ -1,5 +1,9 @@
-//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
-//473052494821-94r369taon7n36c5justn4kplr641qg0.apps.googleusercontent.com
-//https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid
-//https://console.cloud.google.com/apis/credentials?highlightClient=473052494821-94r369taon7n36c5justn4kplr641qg0.apps.googleusercontent.com&project=gp4e-6a225
-//https://gp4e.github.io/Web/home.html
+var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
+function checkLogin() {
+    var t = window.localStorage.getItem("github_token")
+    if (t==null) {
+        var nt = prompt("Github Token")
+        console.log(nt)
+        window.localStorage.setItem("github_token",nt)
+    }
+}
