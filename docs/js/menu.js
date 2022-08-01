@@ -3,7 +3,7 @@ function getMenu()  {
         {name: "Home", href: "./home.html"},
         {name: "Game", Sub: ["General","Graphic","Story","Script"], href: "./Game.html"},
         {name: "Login", id: "lg", href: "./Login.html"}
-    ]
+    ] 
     var t = "a"
     var res = "<ul>"
     menuJSON.forEach(mi => {
