@@ -16,7 +16,7 @@ function checkLogin() {
                 lgb.addEventListener("click", (e)=>{
                     this.window.name="gp4ehome"
                     var w = window.open("./loginform.html","","popup")
-                    w.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
+                    //w.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
                 })
                 break;
             default:
