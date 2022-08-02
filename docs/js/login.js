@@ -3,17 +3,20 @@ function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0]
     var t = window.localStorage.getItem("github_token")
     
-    if (t==null) {
-        
-    }
-    switch (t) {
-        case null:
-            var w = window.open("./loginform.html","","popup")
-            this.window.name="gp4ehome"
-            break;
-    
-        default:
-            break;
+    if (query().length==0) {
+        switch (t) {
+            case null:
+                lgb.addEventListener("click", (e)=>{
+                    this.window.name="gp4ehome"
+                    var w = window.open("./loginform.html","","popup")
+                    
+                })
+                break;
+            default:
+                break;
+        }
+    } else {
+
     }
 }
 
