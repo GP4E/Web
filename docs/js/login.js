@@ -7,7 +7,8 @@ function checkLogin() {
         q.length==0||
         q.length==undefined||
         q.length==null||
-        q=={}
+        q=={}||
+        notValid(q)
     ) {
         switch (t) {
             case null:
@@ -27,3 +28,19 @@ function checkLogin() {
     }
 }
 
+function notValid(qu) {
+    var username = qu.username
+    var email = qu.email
+    var token = qu.token
+    var re = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@gmail.com/i)
+    var rt = new RegExp(/[A-Za-z0-9_]*/i)
+    if (
+        //user
+        username.length>0&&
+        //email
+        re.test(email)&&
+        //token
+        rt.test(token)
+    ) return false
+    else return true
+}
