@@ -2,7 +2,7 @@ function getMenu()  {
     var menuJSON = [
         {name: "Home", href: "./home.html"},
         {name: "Game", Sub: ["General","Graphic","Story","Script"], href: "./Game.html"},
-        {name: "Login", id: "lg", class:"loginbtn", href: "./Login.html", style: "margin-left: auto",},
+        {name: "Login", id: "lg", href: "./Login.html", style: "margin-left: auto"},
     ] 
     var t = "a"
     var res = "<ul>"
