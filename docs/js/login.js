@@ -2,18 +2,21 @@ var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d
 function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0]
     var t = window.localStorage.getItem("github_token")
-    
+    var q = query()
     if (
-        query().length==0||
-        query().length==undefined||
-        query().length==null||
-        query()=={}) {
+        q.length==0||
+        q.length==undefined||
+        q.length==null||
+        q=={}
+    ) {
         switch (t) {
             case null:
+            case "":
+            case undefined:
                 lgb.addEventListener("click", (e)=>{
                     this.window.name="gp4ehome"
                     var w = window.open("./loginform.html","","popup")
-                    
+                    w.document.getElementById("loginform").setAttribute("action",window.location.origin+window.location.pathname)
                 })
                 break;
             default:
