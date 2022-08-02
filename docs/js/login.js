@@ -3,7 +3,11 @@ function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0]
     var t = window.localStorage.getItem("github_token")
     
-    if (query().length==0) {
+    if (
+        query().length==0||
+        query().length==undefined||
+        query().length==null||
+        query()=={}) {
         switch (t) {
             case null:
                 lgb.addEventListener("click", (e)=>{
