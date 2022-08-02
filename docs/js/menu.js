@@ -2,7 +2,7 @@ function getMenu()  {
     var menuJSON = [
         {name: "Home", href: "./home.html"},
         {name: "Game", Sub: ["General","Graphic","Story","Script"], href: "./Game.html"},
-        {name: "Login", id: "lg", href: "./Login.html"}
+        {name: "Login", id: "lg", class:"loginbtn", href: "./Login.html", style: "float: right",},
     ] 
     var t = "a"
     var res = "<ul>"
@@ -14,6 +14,20 @@ function getMenu()  {
             mi.id.length > 0
         ) {
             res+=" id=\""+mi.id+"\""
+        }
+        if (
+            mi.class != undefined &&
+            mi.class != null &&
+            mi.class.length > 0
+        ) {
+            res+=" class=\""+mi.class+"\""
+        }
+        if (
+            mi.style != undefined &&
+            mi.style != null &&
+            mi.style.length > 0
+        ) {
+            res+=" style=\""+mi.style+"\""
         }
         res+="><"+t
         if (
