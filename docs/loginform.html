@@ -13,6 +13,18 @@
                 <br><input type="submit" id="sub">
             </form>
         </div>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <div id="g_id_onload"
+         data-client_id="473052494821-ehc0a3moagmfs8tnao6q4h3ah3482cih.apps.googleusercontent.com"
+         data-login_uri="https://gp4e.github.io/Web/loginform.html"
+         data-auto_prompt="false"></div>
+        <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-shape="rectangular"
+         data-logo_alignment="left"></div>
         <script>
             document.getElementById("loginform").addEventListener("submit",()=>window.close())
             function found(name) {
@@ -21,8 +33,12 @@
             function getAll() {
                 return Array.from(document.getElementById("loginform").getElementsByTagName("input")).map(x=>x.getAttribute("name"))
             }
-            getAll().forEach(q=>{found(q).value=(window.localStorage.getItem(q)||"")})
-            //ciao
+            
+            getAll().forEach(q=>{
+                var defv = window.localStorage.getItem(q)
+                if (nou(defv)) {defv=""}
+                found(q).value=defv
+            })
         </script>
     </body>
 </html>
