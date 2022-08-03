@@ -24,9 +24,11 @@ function checkLogin() {
                 setupPage()
         }
     } else {
+        console.log("set item")
         window.localStorage.setItem("github_token",q.token)
         window.localStorage.setItem("username",q.username)
         window.localStorage.setItem("email",q.email.toLowerCase())
+        console.log("done")
         setupPage()
     }
 }
@@ -50,6 +52,7 @@ function notValid(qu) {
 function setupPage() {
     console.log("Start")
     var t = window.localStorage.getItem("github_token")
+    
     $.ajax({
         url: 'https://api.github.com/user',
         beforeSend: function(xhr) {
