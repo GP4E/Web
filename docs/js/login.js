@@ -57,7 +57,7 @@ function setupPage() {
     $.ajax({
         url: 'https://api.github.com/user',
         beforeSend: function(xhr) {
-             xhr.setRequestHeader("Accept", "pplication/vnd.github+json")
+             xhr.setRequestHeader("Accept", "application/vnd.github+json")
             xhr.setRequestHeader("Authorization", "token "+t)
         },
         success: function (us) {
