@@ -91,3 +91,5 @@ export async function setupPage() {
     page.appendChild(profileinfo)
 
 }
+
+document.addEventListener("load",(m)=>checkLogin())
