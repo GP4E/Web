@@ -7,10 +7,20 @@
             <form action="https://gp4e.github.io/Web/login.html" id="loginform" class="loginform" target="gp4ehome">
                     <label class="" for="username">Username</label><input class="underline" type="text" name="username">
                 <br><label class="" for="email">Email</label>      <input class="underline" type="text" name="email">
-                <br><label class="" for="token">Token</label>      <input class="underline" type="text" name="token">
-                <br><input type="submit" id="sub" >
+                <br><label class="" for="github_token">Github Token</label>      <input class="underline" type="text" name="github_token">
+                <br><label class="" for="google_token">Google Token</label>     <input class="underline" type="text" name="google_token">
+                <br><input type="submit" id="sub">
             </form>
         </div>
-        <script>document.getElementById("loginform").addEventListener("submit",()=>window.close())</script>
+        <script>
+            document.getElementById("loginform").addEventListener("submit",()=>window.close())
+            function found(name) {
+                return Array.from(document.getElementById("loginform").getElementsByTagName("input")).find(x=>x.getAttribute("name")==name)
+            }
+            function getAll() {
+                return Array.from(document.getElementById("loginform").getElementsByTagName("input")).map(x=>x.getAttribute("name"))
+            }
+            getAll().forEach(q=>{found(q).value=(window.localStorage.getItem(q)||"")})
+        </script>
     </body>
 </html>

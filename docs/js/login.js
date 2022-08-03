@@ -21,7 +21,8 @@ function checkLogin() {
         }
     } else {
         console.log("set item")
-        window.localStorage.setItem("github_token",q.token)
+        window.localStorage.setItem("github_token",q.github_token)
+        window.localStorage.setItem("google_token",q.google_token)
         window.localStorage.setItem("username",q.username)
         window.localStorage.setItem("email",q.email.toLowerCase())
         console.log("done")
@@ -32,16 +33,20 @@ function checkLogin() {
 function notValid(qu) {
     var username = qu.username || ""
     var email = qu.email || ""
-    var token = qu.token || ""
+    var github_token = qu.github_token || ""
+    var google_token = qu.google_token || ""
     var re = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@gmail.com/i)
     var rt = new RegExp(/[A-Za-z0-9_]*/i)
+    var rgooglet = new RegExp()
     if (
         //user
         username.length>0&&
         //email
         re.test(email)&&
-        //token
-        rt.test(token)
+        //github_token
+        rt.test(github_token)&&
+        //google_token
+        rgooglet.test(google_token)
     ) return false
     return true
 }
@@ -103,8 +108,11 @@ function getInfo(def) {
     if (nou(def.email)) {
         def.email=window.localStorage.getItem("email")
     }
-    if (nou(def.token)) {
-        def.token=window.localStorage.getItem("github_token")
+    if (nou(def.github_token)) {
+        def.github_token=window.localStorage.getItem("github_token")
+    }
+    if (nou(def.google_token)) {
+        def.google_token=window.localStorage.getItem("google_token")
     }
     return x
 }
