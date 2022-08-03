@@ -47,7 +47,7 @@ function notValid(qu) {
     ) return false
     else return true
 }
-async function setupPage() {
+function setupPage() {
     console.log("Start")
     var t = window.localStorage.getItem("github_token")
     $.ajax({
