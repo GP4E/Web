@@ -9,3 +9,6 @@ function query() {
     }
     return result
 }
+function nou(p) {
+    return (p==null||p==undefined)
+}

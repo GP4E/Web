@@ -2,9 +2,8 @@ var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d
 function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0].children[0]
     var t = window.localStorage.getItem("github_token")
-    var q = query()
+    var q = getInfo(query())
     if (
-        q=={}||
         notValid(q)
     ) {
         switch (t) {
@@ -31,9 +30,9 @@ function checkLogin() {
 }
 
 function notValid(qu) {
-    var username = qu.username
-    var email = qu.email
-    var token = qu.token
+    var username = qu.username || ""
+    var email = qu.email || ""
+    var token = qu.token || ""
     var re = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@gmail.com/i)
     var rt = new RegExp(/[A-Za-z0-9_]*/i)
     if (
@@ -44,7 +43,7 @@ function notValid(qu) {
         //token
         rt.test(token)
     ) return false
-    else return true
+    return true
 }
 function setupPage() {
     console.log("Start")
@@ -96,5 +95,17 @@ function setupPage() {
         }
     })
 }
-
+function getInfo(def) {
+    var x = def
+    if (nou(def.username)) {
+       def.username=window.localStorage.getItem("username")
+    }
+    if (nou(def.email)) {
+        def.email=window.localStorage.getItem("email")
+    }
+    if (nou(def.token)) {
+        def.token=window.localStorage.getItem("github_token")
+    }
+    return x
+}
 //document.addEventListener("load",(m)=>checkLogin())
