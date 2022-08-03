@@ -24,7 +24,7 @@ function checkLogin() {
         window.localStorage.setItem("github_token",q.github_token)
         window.localStorage.setItem("google_token",q.google_token)
         window.localStorage.setItem("username",q.username)
-        window.localStorage.setItem("email",q.email.toLowerCase())
+       // window.localStorage.setItem("email",q.email.toLowerCase())
         console.log("done")
         setupPage()
     }
@@ -44,9 +44,9 @@ function notValid(qu) {
         //email
         re.test(email)&&
         //github_token
-        rt.test(github_token)&&
+        rt.test(github_token)//&&
         //google_token
-        rgooglet.test(google_token)
+        //rgooglet.test(google_token)
     ) return false
     return true
 }
