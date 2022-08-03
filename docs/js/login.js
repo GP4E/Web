@@ -4,9 +4,6 @@ function checkLogin() {
     var t = window.localStorage.getItem("github_token")
     var q = query()
     if (
-        q.length==0||
-        q.length==undefined||
-        q.length==null||
         q=={}||
         notValid(q)
     ) {
