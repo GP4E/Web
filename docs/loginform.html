@@ -8,8 +8,9 @@
                     <label class="" for="username">Username</label><input class="underline" type="text" name="username">
                 <br><label class="" for="email">Email</label>      <input class="underline" type="text" name="email">
                 <br><label class="" for="token">Token</label>      <input class="underline" type="text" name="token">
-                <br><input type="submit" >
+                <br><input type="submit" id="sub" >
             </form>
         </div>
+        <script>document.getElementById("loginform").addEventListener("submit",()=>window.close())</script>
     </body>
 </html>

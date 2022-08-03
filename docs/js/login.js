@@ -2,7 +2,7 @@ import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 import { query } from "./query.js";
 
 var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
-export async function checkLogin() {
+export function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0].children[0]
     var t = window.localStorage.getItem("github_token")
     var q = query()
@@ -30,7 +30,7 @@ export async function checkLogin() {
         window.localStorage.setItem("github_token",q.token)
         window.localStorage.setItem("username",q.username)
         window.localStorage.setItem("email",q.email.toLowerCase())
-        await setupPage()
+        setupPage()
     }
 }
 
@@ -51,11 +51,15 @@ export function notValid(qu) {
     else return true
 }
 export async function setupPage() {
+    console.log("Start")
     var t = window.localStorage.getItem("github_token")
     var oc = new Octokit({
         auth: t
     })
+    console.log("octo")
     var us = await oc.request("GET /user")
+    console.log("us")
+    console.log(us)
     var username = us.login
     var id = us.id
     var avatar = us.avatar_url
@@ -90,6 +94,7 @@ export async function setupPage() {
         usleft.appendChild(usmail)
     profileinfo.appendChild(usleft)
     page.appendChild(profileinfo)
+    console.log("end")
 
 }
 
