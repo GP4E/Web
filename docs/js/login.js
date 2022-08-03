@@ -18,7 +18,7 @@ export function checkLogin() {
             case "":
             case undefined:
                 lgb.addEventListener("click", (e)=>{
-                    this.window.name="gp4ehome"
+                    window.name="gp4ehome"
                     var w = window.open("./loginform.html","","popup")
                     //w.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
                 })
