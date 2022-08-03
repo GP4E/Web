@@ -1,4 +1,4 @@
-export function query() {
+function query() {
     var result = {};
     if (location.search.length>0) {
         var pairs = location.search.slice(1).split('&');

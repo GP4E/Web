@@ -29,12 +29,10 @@
         </div>
         <!-- #Script -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script type="module" src="./js/query.js"></script>
-        <script type="module" src="./js/menu.js"></script>
-        <script type="module" src="./js/login.js"></script>
-        <script type="module">
-            import {checkLogin} from "./js/login.js"
-            import {getMenu} from "./js/menu.js"
+        <script src="./js/query.js"></script>
+        <script src="./js/menu.js"></script>
+        <script src="./js/login.js"></script>
+        <script>
             Array.from(document.getElementsByClassName("menu")).forEach(x=>x.innerHTML=getMenu())
             checkLogin()
             //ciao

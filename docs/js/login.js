@@ -1,8 +1,5 @@
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-import { query } from "./query.js";
-
 var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
-export function checkLogin() {
+function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0].children[0]
     var t = window.localStorage.getItem("github_token")
     var q = query()
@@ -34,7 +31,7 @@ export function checkLogin() {
     }
 }
 
-export function notValid(qu) {
+function notValid(qu) {
     var username = qu.username
     var email = qu.email
     var token = qu.token
@@ -50,52 +47,54 @@ export function notValid(qu) {
     ) return false
     else return true
 }
-export async function setupPage() {
+async function setupPage() {
     console.log("Start")
     var t = window.localStorage.getItem("github_token")
-    var oc = new Octokit({
-        auth: t
-    })
-    console.log("octo")
-    var us = await oc.request("GET /user")
-    console.log("us")
-    console.log(us)
-    var username = us.login
-    var id = us.id
-    var avatar = us.avatar_url
-    var usurl = us.url
-    var email = us.email
-    var page = document.getElementsByClassName("page")[0]
-    var profileinfo = document.createElement("div")
-    profileinfo.style.display="flex"
-    profileinfo.style.flexDirection="row"
-        var pimg = document.createElement("img")
-        pimg.style.borderRadius="50%"
-        pimg.style.width = "128px"
-        pimg.style.height = "128px"
-        pimg.style.padding = "32px"
-        //pimg.style.flexGrow=3
-        pimg.src=avatar
-    profileinfo.appendChild(pimg)
-        var usleft = document.createElement("div")
-        usleft.style.paddingTop="16px"
-        usleft.style.display="flex"
-        usleft.style.flexDirection="column"
-            var usname = document.createElement("a")
-            usname.style.fontSize = "32px"
-            usname.style.color = "#222222"
-            usname.innerHTML=username
-            usname.href = usurl
-        usleft.appendChild(usname)
-            var usmail = document.createElement("span")
-            usmail.style.fontSize = "24px"
-            usmail.style.color = "#555555"
-            usmail.innerHTML=username
-        usleft.appendChild(usmail)
-    profileinfo.appendChild(usleft)
-    page.appendChild(profileinfo)
-    console.log("end")
+    $.ajax({
+        url: 'https://api.github.com/user',
+        beforeSend: function(xhr) {
+             xhr.setRequestHeader("Accept", "pplication/vnd.github+json")
+            xhr.setRequestHeader("Authorization", "token "+t)
+        },
+        success: function (us) {
+            var username = us.login
+            var id = us.id
+            var avatar = us.avatar_url
+            var usurl = us.url
+            var email = us.email
+            var page = document.getElementsByClassName("page")[0]
+            var profileinfo = document.createElement("div")
+            profileinfo.style.display="flex"
+            profileinfo.style.flexDirection="row"
+                var pimg = document.createElement("img")
+                pimg.style.borderRadius="50%"
+                pimg.style.width = "128px"
+                pimg.style.height = "128px"
+                pimg.style.padding = "32px"
+                //pimg.style.flexGrow=3
+                pimg.src=avatar
+            profileinfo.appendChild(pimg)
+                var usleft = document.createElement("div")
+                usleft.style.paddingTop="16px"
+                usleft.style.display="flex"
+                usleft.style.flexDirection="column"
+                    var usname = document.createElement("a")
+                    usname.style.fontSize = "32px"
+                    usname.style.color = "#222222"
+                    usname.innerHTML=username
+                    usname.href = usurl
+                usleft.appendChild(usname)
+                    var usmail = document.createElement("span")
+                    usmail.style.fontSize = "24px"
+                    usmail.style.color = "#555555"
+                    usmail.innerHTML=username
+                usleft.appendChild(usmail)
+            profileinfo.appendChild(usleft)
+            page.appendChild(profileinfo)
+            console.log("end")
 
+        }
+    })
 }
 
 //document.addEventListener("load",(m)=>checkLogin())
