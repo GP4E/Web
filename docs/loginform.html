@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/popup.css">
+        <!-- ciao -->
     </head>
     <body>
         <div>
@@ -21,6 +22,7 @@
                 return Array.from(document.getElementById("loginform").getElementsByTagName("input")).map(x=>x.getAttribute("name"))
             }
             getAll().forEach(q=>{found(q).value=(window.localStorage.getItem(q)||"")})
+            //ciao
         </script>
     </body>
 </html>
