@@ -33,8 +33,8 @@
         <script type="module" src="./js/menu.js"></script>
         <script type="module" src="./js/login.js"></script>
         <script type="module">
-            import "./js/login.js"
-            import "./js/menu.js"
+            import {checkLogin} from "./js/login.js"
+            import {getMenu} from "./js/menu.js"
             Array.from(document.getElementsByClassName("menu")).forEach(x=>x.innerHTML=getMenu())
             checkLogin()
         </script>
