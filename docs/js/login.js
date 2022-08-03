@@ -1,7 +1,7 @@
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 
 var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
-function checkLogin() {
+export function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0]
     var t = window.localStorage.getItem("github_token")
     var q = query()
@@ -33,7 +33,7 @@ function checkLogin() {
     }
 }
 
-function notValid(qu) {
+export function notValid(qu) {
     var username = qu.username
     var email = qu.email
     var token = qu.token
@@ -49,7 +49,7 @@ function notValid(qu) {
     ) return false
     else return true
 }
-async function setupPage() {
+export async function setupPage() {
     var t = window.localStorage.getItem("github_token")
     var oc = new Octokit({
         auth: t
