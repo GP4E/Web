@@ -60,9 +60,9 @@ function setupPage() {
             var username = us.login
             var id = us.id
             var avatar = us.avatar_url
-            var usurl = us.url
+            var usurl = us.html_url
             var email = us.email
-            var page = document.getElementsByClassName("page")[0]
+            var page = document.getElementsByClassName("user")[0]
             var profileinfo = document.createElement("div")
             profileinfo.style.display="flex"
             profileinfo.style.flexDirection="row"
