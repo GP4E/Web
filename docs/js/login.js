@@ -1,5 +1,5 @@
 import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-import { query } from "./query";
+import { query } from "./query.js";
 
 var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
 export function checkLogin() {
