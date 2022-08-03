@@ -1,4 +1,4 @@
-function getMenu()  {
+export function getMenu()  {
     var menuJSON = [
         {name: "Home", href: "./home.html"},
         {name: "Game", Sub: ["General","Graphic","Story","Script"], href: "./Game.html"},

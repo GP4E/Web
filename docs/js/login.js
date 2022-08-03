@@ -92,4 +92,4 @@ export async function setupPage() {
 
 }
 
-document.addEventListener("load",(m)=>checkLogin())
+//document.addEventListener("load",(m)=>checkLogin())
