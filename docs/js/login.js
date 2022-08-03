@@ -3,7 +3,7 @@ import { query } from "./query.js";
 
 var url = "https://github.com/login/oauth/authorize?scope=user:email&client_id=d88f20c54b921644c506"
 export function checkLogin() {
-    var lgb = document.getElementsByClassName("loginbtn")[0]
+    var lgb = document.getElementsByClassName("loginbtn")[0].children[0]
     var t = window.localStorage.getItem("github_token")
     var q = query()
     if (
@@ -18,7 +18,7 @@ export function checkLogin() {
             case "":
             case undefined:
                 lgb.addEventListener("click", (e)=>{
-                    window.name="gp4ehome"
+                    e.srcElement.ownerDocument.defaultView.name="gp4ehome"
                     var w = window.open("./loginform.html","","popup")
                     //dw.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
                 })
