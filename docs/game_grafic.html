@@ -15,10 +15,15 @@
                 
             </div>
         </div>
+        <div class="page">
+            
+        </div>
         <!-- #Script -->
         <script src="./js/menu.js"></script>
+        <script src="./js/gitpath.js"></script>
         <script>
             Array.from(document.getElementsByClassName("menu")).forEach(x=>x.innerHTML=getMenu())
+            setupPage(document.getElementsByClassName("page")[0])
         </script>
         <!-- #endScript -->
     </body>

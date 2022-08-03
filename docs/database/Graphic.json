@@ -1,0 +1,23 @@
+{
+    "Settings":{
+        "branch": "main"
+    },
+    "Game": {
+        "Tileset": {
+            "Outside": {
+                "Grass": {
+                    "Path":"/Outside/Grass/AllGrass.psd"
+                },
+                "Water": {},
+                "Plant": {
+                    "Tree":"/Outside/Grass/Tree_Game.psd"
+                }
+            }
+        },
+        "GUI": {
+            "Inventory": {
+
+            }
+        }
+    }
+}

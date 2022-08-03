@@ -117,6 +117,3 @@ function getInfo(def) {
     return x
 }
 //document.addEventListener("load",(m)=>checkLogin())
-
-var IDCLIENT = "473052494821-ehc0a3moagmfs8tnao6q4h3ah3482cih.apps.googleusercontent.com"
-var CLIENT_SECRET = "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"
