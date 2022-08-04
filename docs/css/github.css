@@ -1,5 +1,7 @@
+.github_path_tree::-webkit-scrollbar {display: none;}
 .github_path_tree {
     display: block;
+    overflow-y: scroll;
     background-color: var(--color-canvas-default);
     /* COLORS */
     --color-canvas-default-transparent: rgba(13,17,23,0);
@@ -457,11 +459,28 @@
 }
 
 .github_path_tree .github_item_icon {
-    
+    color: var(--color-icon-directory);
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+    height: 16px;
+    width: 16px;
 }
 
 .github_path_tree .github_item_label {
-    
+    margin-right: 16px !important;
+    min-width: 0 !important;
+    flex: auto !important;
 }
-
+.github_path_tree .github_item_commitchanges {
+    margin-right: 16px !important;
+    min-width: 0 !important;
+    width: 41.66666665%;
+    flex: auto !important;
+}
+.github_path_tree .github_item_size {
+    color: var(--color-fg-muted) !important;
+    width: 100%;
+}
 /*  */
