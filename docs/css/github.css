@@ -1,6 +1,7 @@
 .github_path_tree::-webkit-scrollbar {display: none;}
 .github_path_tree {
     display: block;
+    margin-block-start: 1em;
     overflow-y: scroll;
     background-color: var(--color-canvas-default);
     /* COLORS */
@@ -467,6 +468,7 @@
     fill: currentColor;
     height: 16px;
     width: 16px;
+    flex-shrink: 0 !important;
 }
 
 .github_path_tree .github_item_label {
