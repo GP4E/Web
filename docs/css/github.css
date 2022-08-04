@@ -489,9 +489,15 @@
     width: 41.66666665%;
     flex: auto !important;
     color: var(--color-fg-muted) !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.github_path_tree .github_item_commitchanges::-webkit-scrollbar {
+    display: none;
 }
 .github_path_tree .github_item_size {
     color: var(--color-fg-muted) !important;
-    width: 100%;
+    width: fit-content;
 }
+
 /*  */
