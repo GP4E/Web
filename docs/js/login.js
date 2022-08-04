@@ -3,6 +3,11 @@ function checkLogin() {
     var lgb = document.getElementsByClassName("loginbtn")[0].children[0]
     var t = window.localStorage.getItem("github_token")
     var q = getInfo(query())
+    lgb.addEventListener("click", (e)=>{
+        e.srcElement.ownerDocument.defaultView.name="gp4ehome"
+        var w = window.open("./loginform.html","","popup")
+        //dw.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
+    })
     if (
         notValid(q)
     ) {
@@ -10,11 +15,7 @@ function checkLogin() {
             case null:
             case "":
             case undefined:
-                lgb.addEventListener("click", (e)=>{
-                    e.srcElement.ownerDocument.defaultView.name="gp4ehome"
-                    var w = window.open("./loginform.html","","popup")
-                    //dw.document.addEventListener("load",(ee)=>w.document.getElementById("loginform").setAttribute("action",this.window.location.origin+this.window.location.pathname))
-                })
+                lgb.innerHTML="LogIn"
                 break;
             default:
                 setupPage()
