@@ -12,3 +12,12 @@ function query() {
 function nou(p) {
     return (p==null||p==undefined)
 }
+
+function parseSize(s) {
+    // Byte to bo
+    var nc = Math.floor(Math.log10(s))+1
+    var ind = Math.ceil(nc/3)-1
+    var arr = ["B","KB","MB","GB","TB"]
+    var b = Number.parseInt(s)/Math.pow(10,ind*3)
+    return b.toFixed(3)+" "+arr[ind]
+}

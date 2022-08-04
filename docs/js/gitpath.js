@@ -1,13 +1,30 @@
 async function setupGitGraphicsPage(element) {
-    document.addEventListener("github_navigate_to",(e)=>{
+    document.addEventListener("github_navigate_to",async (e)=>{
         var i = e.item
-
+        element.innerHTML=""
+        var returnHome = analyze([{
+            "sha": "ea035f6f977e1d3c86623e7c2522592c277e2872",
+            "url": "https://api.github.com/repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",
+            "path": "Home",
+            "type": "home",
+            "mode": 0,
+        }])
+        switch (i.type) {
+            case "tree":
+            case "home":
+                var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
+                var list = analyze(tree.tree)
+                element.appendChild(list)
+            case "blob":
+                var file = await req()
+                var b = blob(file)
+        element.appendChild(returnHome)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
     var res = ""
     var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
     var trhtml = document.createElement("div")
-    analyze(tree).forEach(e=>trhtml.appendChild(e))
+    analyze(tree.tree).forEach(e=>trhtml.appendChild(e))
     trhtml.classList.add("github_path_tree")
     element.innerHTML=""
     element.appendChild(trhtml)
@@ -31,7 +48,7 @@ async function req(gurl, callback_success) {
 }
 
 function analyze(t) {
-    var treepath = Array.from(t.tree).sort((a,b)=>{
+    var treepath = Array.from(t).sort((a,b)=>{
         switch (a.type) {
             case "blob":
                 switch (b.type) {
@@ -67,18 +84,25 @@ function analyze(t) {
         img.classList.add("github_item_icon")
         img.width=16
         img.height=16
-        img.viewBox="0 0 16 16"
         img.setAttribute("version","1.1")
         switch (p.type) {
             case "blob":
+                img.viewBox="0 0 16 16"
                 var pa = document.createElementNS("http://www.w3.org/2000/svg","path");
                 pa.style.fillRule="evenodd"
                 pa.setAttribute("d","M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 00.25-.25V6h-2.75A1.75 1.75 0 019 4.25V1.5H3.75zm6.75.062V4.25c0 .138.112.25.25.25h2.688a.252.252 0 00-.011-.013l-2.914-2.914a.272.272 0 00-.013-.011zM2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16h-9.5A1.75 1.75 0 012 14.25V1.75z")
                 img.appendChild(pa)
                 break;
             case "tree":
+                img.viewBox="0 0 16 16"
                 var pa = document.createElementNS("http://www.w3.org/2000/svg","path");
                 pa.setAttribute("d","M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3H7.5a.25.25 0 01-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75z")
+                img.appendChild(pa)
+                break;
+            case "home":
+                img.viewBox="0 0 50 50"
+                var pa = document.createElementNS("http://www.w3.org/2000/svg","path");
+                pa.setAttribute("d","M40.348,23.401l-15-10.909c-0.351-0.256-0.826-0.256-1.177,0l-15,10.909c-0.446,0.324-0.545,0.95-0.22,1.396  c0.325,0.447,0.949,0.544,1.397,0.221l1.974-1.436v13.718c0,0.553,0.448,1,1,1h8.075c0.552,0,1-0.447,1-1v-9.393h4.725v9.393  c0,0.553,0.448,1,1,1h8.075c0.552,0,1-0.447,1-1V23.583l1.974,1.436c0.178,0.129,0.384,0.191,0.587,0.191  c0.309,0,0.614-0.143,0.81-0.412C40.894,24.352,40.794,23.726,40.348,23.401z M35.197,36.301h-6.075v-9.393c0-0.553-0.448-1-1-1  h-6.725c-0.552,0-1,0.447-1,1v9.393h-6.075V22.128l10.438-7.591l10.438,7.591V36.301z")
                 img.appendChild(pa)
                 break;
             default:
@@ -95,7 +119,7 @@ function analyze(t) {
         commitchanges.classList.add("github_item_commitchanges")
         var size = document.createElement("div")
         size.classList.add("github_item_size")
-        if (!nou(p.size)) size.innerHTML=p.size
+        if (!nou(p.size)) size.innerHTML=parseSize(p.size)
         item.appendChild(img)
         item.appendChild(label)
         item.appendChild(commitchanges)
@@ -104,4 +128,8 @@ function analyze(t) {
         return item
     })
     return res
+}
+
+function blob(f) {
+    var c = decodeURIComponent(escape(window.atob(f.content)));
 }
