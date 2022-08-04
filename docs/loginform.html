@@ -8,7 +8,7 @@
             <form action="https://gp4e.github.io/Web/login.html" id="loginform" class="loginform" target="_top">
                     <label class="" for="username">Username</label><input class="underline" type="text" name="username">
                 <br><label class="" for="email">Email</label>      <input class="underline" type="text" name="email">
-                <br><label class="" for="github_token"><a target="_top" href="https://github.com/settings/tokens">Github Token</a></label>      <input class="underline" type="text" name="github_token">
+                <br><label class="" for="github_token"><a target="_blank" href="https://github.com/settings/tokens">Github Token <span style="font-size: small;">(Expiration: No; Scopes: Tutti)</span><a></label>      <input class="underline" type="text" name="github_token">
                 <!-- <br><label class="" for="google_token">Google Token</label>     <input class="underline" type="text" name="google_token"> -->
                 <br><input type="submit" id="sub">
             </form>
@@ -25,6 +25,7 @@
          data-text="sign_in_with"
          data-shape="rectangular"
          data-logo_alignment="left"></div> -->
+         <script src="./js/utils.js"></script>
         <script>
             document.getElementById("loginform").addEventListener("submit",()=>window.close())
             function found(name) {
