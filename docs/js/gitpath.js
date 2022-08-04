@@ -40,18 +40,19 @@ function analyze(t) {
         img.setAttribute("version","1.1")
         switch (p.type) {
             case "blob":
-                var p = document.createElementNS("http://www.w3.org/2000/svg","path");
-                p.setAttribute("fill-rule","evenodd")
-                p.setAttribute("d","M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 00.25-.25V6h-2.75A1.75 1.75 0 019 4.25V1.5H3.75zm6.75.062V4.25c0 .138.112.25.25.25h2.688a.252.252 0 00-.011-.013l-2.914-2.914a.272.272 0 00-.013-.011zM2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16h-9.5A1.75 1.75 0 012 14.25V1.75z")
-                img.appendChild(p)
+                var pa = document.createElementNS("http://www.w3.org/2000/svg","path");
+                pa.style.fillRule="evenodd"
+                pa.setAttribute("d","M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 00.25-.25V6h-2.75A1.75 1.75 0 019 4.25V1.5H3.75zm6.75.062V4.25c0 .138.112.25.25.25h2.688a.252.252 0 00-.011-.013l-2.914-2.914a.272.272 0 00-.013-.011zM2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16h-9.5A1.75 1.75 0 012 14.25V1.75z")
+                img.appendChild(pa)
                 break;
             case "tree":
-                var p = document.createElementNS("http://www.w3.org/2000/svg","path");
-                p.setAttribute("d","M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3H7.5a.25.25 0 01-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75z")
-                img.appendChild(p)
+                var pa = document.createElementNS("http://www.w3.org/2000/svg","path");
+                pa.setAttribute("d","M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3H7.5a.25.25 0 01-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75z")
+                img.appendChild(pa)
                 break;
             default:
                 // img.style.display="hidden"
+                break;
         }
         var label=document.createElement("div")
         label.classList.add("github_item_label")
