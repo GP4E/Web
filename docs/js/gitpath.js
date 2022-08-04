@@ -27,7 +27,34 @@ async function req(gurl, callback_success) {
 }
 
 function analyze(t) {
-    var treepath = Array.from(t.tree)
+    var treepath = Array.from(t.tree).sort((a,b)=>{
+        switch (a.type) {
+            case "blob":
+                switch (b.type) {
+                    case "blob":
+                        return a.path.localeCompare(b.name)
+                        break;
+                    case "tree":
+                        return -1
+                    default:
+                        return 0;
+                }
+                break;
+            case "tree":
+                switch (b.type) {
+                    case "blob":
+                        return 1
+                        break;
+                    case "tree":
+                        return a.path.localeCompare(b.name)
+                    default:
+                        return 0;
+                }
+                break;
+            default:
+                return 0;
+        }
+    })
     var res = treepath.map(p=>{
         var item = document.createElement("div")
         item.classList.add("item")

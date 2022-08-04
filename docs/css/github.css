@@ -472,10 +472,10 @@
     height: 16px;
     width: 16px;
     flex-shrink: 0 !important;
+    margin-right: 16px !important;
 }
 
 .github_path_tree .github_item_label {
-    margin-right: 16px !important;
     min-width: 0 !important;
     flex: auto !important;
     color: var(--color-fg-default) !important;
@@ -484,7 +484,6 @@
     vertical-align: top;
 }
 .github_path_tree .github_item_commitchanges {
-    margin-right: 16px !important;
     min-width: 0 !important;
     width: 41.66666665%;
     flex: auto !important;
