@@ -22,7 +22,6 @@ body {
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 8px;
-  height: calc(100vh - 58px );
 }
 .menu {
   position: sticky;
