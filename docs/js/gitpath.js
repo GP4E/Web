@@ -5,6 +5,7 @@ async function setupGitGraphicsPage(element) {
     var trhtml = document.createElement("div")
     analyze(tree).forEach(e=>trhtml.appendChild(e))
     trhtml.classList.add("github_path_tree")
+    element.innerHTML=""
     element.appendChild(trhtml)
 }
 

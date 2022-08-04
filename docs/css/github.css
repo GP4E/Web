@@ -4,6 +4,7 @@
     overflow-y: scroll;
     background-color: var(--color-canvas-default);
     /* COLORS */
+    --color-icon: #8b949e;
     --color-canvas-default-transparent: rgba(13,17,23,0);
     --color-page-header-bg: #0d1117;
     --color-marketing-icon-primary: #79c0ff;
@@ -459,7 +460,7 @@
 }
 
 .github_path_tree .github_item_icon {
-    color: var(--color-icon-directory);
+    color: var(--color-icon);
     display: inline-block;
     overflow: visible !important;
     vertical-align: text-bottom;
@@ -472,14 +473,17 @@
     margin-right: 16px !important;
     min-width: 0 !important;
     flex: auto !important;
-        color: var(--color-fg-default) !important;
+    color: var(--color-fg-default) !important;
+    display: inline-block;
+    max-width: 125px;
+    vertical-align: top;
 }
 .github_path_tree .github_item_commitchanges {
     margin-right: 16px !important;
     min-width: 0 !important;
     width: 41.66666665%;
     flex: auto !important;
-        color: var(--color-fg-muted) !important;
+    color: var(--color-fg-muted) !important;
 }
 .github_path_tree .github_item_size {
     color: var(--color-fg-muted) !important;
