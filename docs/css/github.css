@@ -460,6 +460,7 @@
     border-top-color: var(--color-border-muted);
     border-top-style: solid;
     border-top-width: 1px;
+    display: flex !important;
 }
 
 .github_path_tree .github_item_icon {
