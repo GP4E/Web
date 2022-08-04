@@ -1,4 +1,8 @@
 async function setupGitGraphicsPage(element) {
+    document.addEventListener("github_navigate_to",(e)=>{
+        var i = e.item
+
+    })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
     var res = ""
     var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
@@ -32,10 +36,10 @@ function analyze(t) {
             case "blob":
                 switch (b.type) {
                     case "blob":
-                        return a.path.localeCompare(b.name)
+                        return a.path.localeCompare(b.path)
                         break;
                     case "tree":
-                        return -1
+                        return 1
                     default:
                         return 0;
                 }
@@ -43,10 +47,10 @@ function analyze(t) {
             case "tree":
                 switch (b.type) {
                     case "blob":
-                        return 1
+                        return -1
                         break;
                     case "tree":
-                        return a.path.localeCompare(b.name)
+                        return a.path.localeCompare(b.path)
                     default:
                         return 0;
                 }
