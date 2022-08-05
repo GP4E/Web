@@ -18,6 +18,9 @@ async function setupGitGraphicsPage(element) {
             case "blob":
                 var file = await req()
                 var b = blob(file)
+                element.appendChild(b)
+                break;
+        }
         element.appendChild(returnHome)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
@@ -132,4 +135,5 @@ function analyze(t) {
 
 function blob(f) {
     var c = decodeURIComponent(escape(window.atob(f.content)));
+    
 }
