@@ -5,7 +5,8 @@ async function setupGitGraphicsPage(element) {
         document.getElementsByClassName("page")[0].innerHTML=""
         var div = document.createElement("div")
         div.classList.add("github_path_tree")
-
+        document.getElementsByClassName("page")[0].appendChild(div)
+        
         switch (i.type) {
             case "tree":
                 analyze([{
@@ -27,7 +28,6 @@ async function setupGitGraphicsPage(element) {
                 divement.appendChild(b)
                 break;
         }
-        document.getElementsByClassName("page")[0].appendChild(div)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
     var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
