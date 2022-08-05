@@ -137,6 +137,7 @@ function analyze(t) {
         item.addEventListener("click", (c)=>{document.dispatchEvent(new CustomEvent("github_navigate_to",{detail: p}))})
         return item
     })
+    console.log("analyze\n",t,treepath,res)
     return res
 }
 
