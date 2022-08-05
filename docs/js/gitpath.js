@@ -11,10 +11,13 @@ async function setupGitGraphicsPage(element) {
         }])
         switch (i.type) {
             case "tree":
-            case "home":
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
                 var list = analyze(tree.tree)
-                list.forEach(l=>element.appendChild(l))
+                var div = document.createElement("div")
+                div.classList.add("github_path_tree")
+                list.forEach(l=>div.appendChild(l))
+                element.appendChild(div)
+            case "home":
             case "blob":
                 var file = await req()
                 var b = blob(file,i)
