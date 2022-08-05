@@ -12,7 +12,7 @@ async function setupGitGraphicsPage(element) {
             "type": "home",
             "mode": 0,
         }])
-        div.appendChild(returnHome)
+        returnHome.forEach(x=>div.appendChild(x))
         switch (i.type) {
             case "tree":
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
