@@ -1,28 +1,28 @@
 async function setupGitGraphicsPage(element) {
     document.addEventListener("github_navigate_to",async (e)=>{
         var i = e.detail
+        console.log("i: ", i)
         element.innerHTML=""
         var div = document.createElement("div")
         div.classList.add("github_path_tree")
 
-        var returnHome = analyze([{
-            "sha": "ea035f6f977e1d3c86623e7c2522592c277e2872",
-            "url": "https://api.github.com/repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",
-            "path": "Home",
-            "type": "home",
-            "mode": 0,
-        }])
-        returnHome.forEach(x=>div.appendChild(x))
         switch (i.type) {
             case "tree":
+                analyze([{
+                    "sha": "ea035f6f977e1d3c86623e7c2522592c277e2872",
+                    "url": "https://api.github.com/repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",
+                    "path": "Home",
+                    "type": "home",
+                    "mode": "040000",
+                }]).forEach(x=>{div.appendChild(x);console.log(x)})
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
-                var list = analyze(tree.tree)
-                
-                list.forEach(l=>div.appendChild(l))
+                analyze(tree.tree).forEach(l=>div.appendChild(l))
                 
             case "home":
+                var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
+                analyze(tree.tree).forEach(e=>div.appendChild(e))
             case "blob":
-                var file = await req()
+                var file = await req("repos/GP4E/GP4EGame/git/blob/"+i.sha)
                 var b = blob(file,i)
                 element.appendChild(b)
                 break;
@@ -30,7 +30,6 @@ async function setupGitGraphicsPage(element) {
         element.appendChild(div)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
-    var res = ""
     var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
     var trhtml = document.createElement("div")
     analyze(tree.tree).forEach(e=>trhtml.appendChild(e))
