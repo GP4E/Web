@@ -63,17 +63,20 @@ function analyze(t) {
                     case "blob":
                         return a.path.localeCompare(b.path)
                         break;
+                    case "home":
                     case "tree":
                         return 1
                     default:
                         return 0;
                 }
                 break;
+            case "home":
             case "tree":
                 switch (b.type) {
                     case "blob":
                         return -1
                         break;
+                    case "home":
                     case "tree":
                         return a.path.localeCompare(b.path)
                     default:
