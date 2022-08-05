@@ -17,7 +17,7 @@ async function setupGitGraphicsPage(element) {
                 element.appendChild(list)
             case "blob":
                 var file = await req()
-                var b = blob(file)
+                var b = blob(file,i)
                 element.appendChild(b)
                 break;
         }
@@ -133,7 +133,149 @@ function analyze(t) {
     return res
 }
 
-function blob(f) {
-    var c = decodeURIComponent(escape(window.atob(f.content)));
+function blob(f,i) {
+    var div = document.createElement("div")
+    div.classList.add("github_blob")
+    var fi = decode(f,i)
+    div.appendChild(createDetailsBlob(fi))
+    div.appendChild(fi.element)
+
+}
+
+function decode(base,item) {
+    var det = detailsbase64(base)
+    var d = document.createElement("div") 
+    d.classList.add("github_blob")
+    d.classList.add("github_blob_"+det.type)
+    var str = atob(base)
+    var l = str.slice("\n").length
+    switch (det.type) {
+        case "txt":
+            
+            break;
+        case "img":           
+            var y = new Image()
+            y.src = "data:image/"+det.extension+";base64,"+base
+            d.appendChild(y)
+            break;
+            
+        default:
+            break;
+    }
+    return {
+        element: d,
+        lines: l,
+        base: base,
+        item: i
+    }
+}
+function detailsbase64(t) {
+    var res = {}
+    switch (t.charAt(0)) {
+        case '/':
+            res.type="img"
+            res.extension='jpeg';
+            break;
+        case 'i':
+            res.type="img"
+            res.extension='png';
+            break;
+        case 'R':
+            res.type="img"
+            res.extension='gif';
+            break;
+        case 'U':
+            res.type="img"
+            res.extension='webp';
+            break;
+        case 'J':
+            res.type='img'
+            res.extension='pdf';
+            break;
+        case 'O':
+            res.type='img'
+            res.extension='psd';
+            break;
+        //Text
+        case 'Z':
+            res.type='cmd'
+            res.extension='bat'
+            break;
+        case 'L':
+            res.type='info'
+            res.extension='.gitignore'
+            break;
+            
+        default:
+            res.type="unknown"
+            res.extension='unknown';
+            alert("Error: "+"Base64 type unknown ("+t.charAt(0)+")")
+            break;
+    }
+    return res
+}
+
+function blobUtils(m) {
+    var det = document.createElement("details")
+    var ul = document.createElement("ul")
+    Array.from([
+        {
+            ct: "View raw",
+            sep:false, 
+            ev:()=>{}
+        },{
+            ct: "Copy raw contents", 
+            sep:false,
+            ev:()=>{}
+        },{
+            ct: "View blame",
+            sep:false,
+            ev:()=>{}
+        },{
+            ct: "",
+            sep:true,
+            ev:()=>{}
+        },{
+            ct: "Edit file",
+            sep:false,
+            ev:()=>{}
+        },{
+            ct: "Open in github.dev",
+            sep:false,
+            ev:()=>{}
+        },
+    ]).forEach(x=>{
+        var l = document.createElement("li")
+        l.innerHTML=x.ct
+        if (x.sep) {
+            l.style.display="block"
+            l.style.height=0
+            l.style.margin="8px 0"
+            l.style.border="1px solid var(--color-border-default)"
+        }
+        l.addEventListener("click",y=>x.ev(y))
+        ul.appendChild(l)
+    })
+    var sum = document.createElement("summary")
+    var svg = document.createElementNS("http://www.w3.org/2000/svg","svg")
+    var path = document.createElementNS("http://www.w3.org/2000/svg","path")
+    svg.viewBox="0 0 16 16"
+    svg.height=16
+    svg.width=16
+    path.setAttribute("d","M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z")
     
+    svg.appendChild(path)
+    sum.appendChild(svg)
+    det.appendChild(sum)
+    return det
+}
+
+function createDetailsBlob(m) {
+    var divdet = document.createElement("div")
+    divdet.classList.add("github_blob_det")
+    var s = document.createElement("span")
+    s.innerHTML=m.lines+" "+(()=>{if (l==1) {return "line"} else return "lines"})+'<span class="github_utils_separator"></span>'+parseSize(i.size)
+    divdet.appendChild(s)
+    divdet.appendChild(blobUtils(m))
+    return divdet
 }
