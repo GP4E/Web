@@ -3,7 +3,7 @@
     display: none;
 }
 .github_path_tree {
-    height: calc(100vh - 58px);
+    max-height: calc(100vh - 58px);
     display: block;
     overflow-y: scroll;
     background-color: var(--color-canvas-default);
