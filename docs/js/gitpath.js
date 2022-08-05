@@ -5,7 +5,7 @@ async function setupGitGraphicsPage(element) {
         document.getElementsByClassName("page")[0].innerHTML=""
         var div = document.createElement("div")
         div.classList.add("github_path_tree")
-        document.getElementsByClassName("page")[0].appendChild(div)
+        
 
         switch (i.type) {
             case "tree":
@@ -18,9 +18,11 @@ async function setupGitGraphicsPage(element) {
                 }]).forEach(x=>{div.appendChild(x);console.log(x)})
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
                 analyze(tree.tree).forEach(lul=>div.appendChild(lul))
+                break;
             case "home":
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
                 analyze(tree.tree).forEach(eue=>div.appendChild(eue))
+                break;
             case "blob":
                 console.log(i.type)
                 var file = await req("repos/GP4E/GP4EGame/git/blob/"+i.sha,(x)=>console.log(x))
@@ -28,6 +30,7 @@ async function setupGitGraphicsPage(element) {
                 divement.appendChild(b)
                 break;
         }
+        document.getElementsByClassName("page")[0].appendChild(div)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
     var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
