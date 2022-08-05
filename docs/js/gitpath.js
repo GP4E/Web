@@ -1,6 +1,6 @@
 async function setupGitGraphicsPage(element) {
     document.addEventListener("github_navigate_to",async (e)=>{
-        var i = e.item
+        var i = e.detail
         element.innerHTML=""
         var returnHome = analyze([{
             "sha": "ea035f6f977e1d3c86623e7c2522592c277e2872",
@@ -127,7 +127,7 @@ function analyze(t) {
         item.appendChild(label)
         item.appendChild(commitchanges)
         item.appendChild(size)
-        item.addEventListener("click", (c)=>{document.dispatchEvent(new Event("github_navigate_to",{item: p}))})
+        item.addEventListener("click", (c)=>{document.dispatchEvent(new CustomEvent("github_navigate_to",{detail: p}))})
         return item
     })
     return res

@@ -16,8 +16,8 @@ function nou(p) {
 function parseSize(s) {
     // Byte to bo
     var nc = Math.floor(Math.log10(s))+1
-    var ind = Math.ceil(nc/3)-1
+    var ind = Math.min(Math.abs(Math.ceil(nc/3)-1),arr.length-1)
     var arr = ["B","KB","MB","GB","TB"]
     var b = Number.parseInt(s)/Math.pow(10,ind*3)
-    return b.toFixed(3)+" "+arr[ind]
+    return b.toFixed(Math.abs(Math.sign(ind)))+" "+arr[ind]
 }
