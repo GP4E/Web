@@ -22,7 +22,7 @@ async function setupGitGraphicsPage(element) {
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
                 analyze(tree.tree).forEach(eue=>div.appendChild(eue))
             case "blob":
-                console(i.type)
+                console.log(i.type)
                 var file = await req("repos/GP4E/GP4EGame/git/blob/"+i.sha,(x)=>console.log(x))
                 var b = blob(file,i)
                 divement.appendChild(b)
