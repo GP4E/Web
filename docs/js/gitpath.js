@@ -16,10 +16,10 @@ async function setupGitGraphicsPage(element) {
                     "mode": "040000",
                 }]).forEach(x=>{div.appendChild(x);console.log(x)})
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/"+i.sha,(x)=>{console.log(x)})
-                analyze(tree.tree).forEach(l=>div.appendChild(l))
+                analyze(tree.tree).forEach(ll=>div.appendChild(ll))
             case "home":
                 var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
-                analyze(tree.tree).forEach(e=>div.appendChild(e))
+                analyze(tree.tree).forEach(ee=>div.appendChild(ee))
             case "blob":
                 var file = await req("repos/GP4E/GP4EGame/git/blob/"+i.sha,(x)=>console.log(x))
                 var b = blob(file,i)
