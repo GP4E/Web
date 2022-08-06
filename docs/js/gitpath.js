@@ -218,12 +218,15 @@ function detailsbase64(t) {
             break;
         case 'L':
             res.type='info'
-            res.extension='.gitignore'
+            res.extension='gitignore'
             break;
-            
+        //Autocad
+        case 'Q':
+            res.type="autocad"
+            res.extension="dwg"
         default:
-            res.type="unknown"
-            res.extension='unknown';
+            res.type="text"
+            res.extension='txt';
             alert("Error: "+"Base64 type unknown ("+first+")")
             break;
     }
