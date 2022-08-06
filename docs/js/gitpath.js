@@ -234,6 +234,8 @@ function detailsbase64(t) {
 }
 
 function blobUtils(m) {
+    var bopt = document.createElement("div")
+    bopt.classList.add("github_blob_option")
     var det = document.createElement("details")
     var ul = document.createElement("ul")
     Array.from([
@@ -302,7 +304,8 @@ function blobUtils(m) {
     sum.appendChild(svg)
     det.appendChild(sum)
     det.appendChild(ul)
-    return det
+    bopt.appendChild(det)
+    return bopt
 }
 
 function createDetailsBlob(m) {

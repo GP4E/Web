@@ -584,6 +584,11 @@
     left: auto;
     width: 175px;
 }
+.github_blob .github_blob_det .github_blob_option ul li {
+    list-style-type: none;
+    white-space: nowrap;
+    color: var(--color-fg-default);
+}
 .github_blob .github_blob_img {
 
 }
