@@ -182,8 +182,10 @@ function decode(base,item) {
     }
 }
 function detailsbase64(t) {
+    console.log(t)
     var res = {}
-    var first = (t+"").charAt(0)
+    var c = t.content
+    var first = (c+"").charAt(0)
     switch (first) {
         case '/':
             res.type="img"
