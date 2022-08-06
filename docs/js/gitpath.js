@@ -96,8 +96,8 @@ function analyze(t) {
         item.classList.add("github_item_type_"+p.type)
         var img=document.createElementNS("http://www.w3.org/2000/svg", "svg");
         img.classList.add("github_item_icon")
-        img.width=16
-        img.height=16
+        img.setAttribute("width","16")
+        img.setAttribute("height","16")
         img.setAttribute("version","1.1")
         switch (p.type) {
             case "blob":
@@ -277,9 +277,9 @@ function blobUtils(m) {
     var sum = document.createElement("summary")
     var svg = document.createElementNS("http://www.w3.org/2000/svg","svg")
     var path = document.createElementNS("http://www.w3.org/2000/svg","path")
-    svg.viewBox="0 0 16 16"
-    svg.height=16
-    svg.width=16
+    svg.setAttribute("viewBox","0 0 16 16")
+    svg.setAttribute("height","16")
+    svg.setAttribute("width","16")
     path.setAttribute("d","M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z")
     
     svg.appendChild(path)
