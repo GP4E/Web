@@ -242,7 +242,7 @@ function blobUtils(m) {
             sep:false, 
             ev:()=>{
                 Array.from(document.getElementsByClassName("github_blob")).forEach(gblob=>{
-                    switch (gbob.style.backgroundColor) {
+                    switch (gblob.style.backgroundColor) {
                         case "#0d1117":
                         case "var(--color-canvas-default)":
                             gblob.style.backgroundColor="f2eee8"
