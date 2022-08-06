@@ -183,7 +183,8 @@ function decode(base,item) {
 }
 function detailsbase64(t) {
     var res = {}
-    switch (t.charAt(0)) {
+    var first = (t+"").charAt(0)
+    switch (first) {
         case '/':
             res.type="img"
             res.extension='jpeg';
@@ -221,7 +222,7 @@ function detailsbase64(t) {
         default:
             res.type="unknown"
             res.extension='unknown';
-            alert("Error: "+"Base64 type unknown ("+t.charAt(0)+")")
+            alert("Error: "+"Base64 type unknown ("+first+")")
             break;
     }
     return res
