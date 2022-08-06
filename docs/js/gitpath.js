@@ -293,7 +293,7 @@ function createDetailsBlob(m) {
     var divdet = document.createElement("div")
     divdet.classList.add("github_blob_det")
     var s = document.createElement("span")
-    s.innerHTML=m.lines+" "+(()=>{if (l==1) {return "line"} else return "lines"})+'<span class="github_utils_separator"></span>'+parseSize(i.size)
+    s.innerHTML=m.lines+" "+(()=>{if (l==1) {return "line"} else return "lines"})+'<span class="github_utils_separator"></span>'+parseSize(m.item.size)
     divdet.appendChild(s)
     divdet.appendChild(blobUtils(m))
     return divdet
