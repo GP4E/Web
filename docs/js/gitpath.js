@@ -25,7 +25,7 @@ async function setupGitGraphicsPage(element) {
                 break;
             case "blob":
                 console.log(i.type)
-                var file = await req("repos/GP4E/GP4EGame/git/blob/"+i.sha,(x)=>console.log(x))
+                var file = await req("repos/GP4E/GP4EGame/git/blobs/"+i.sha,(x)=>console.log(x))
                 var b = blob(file,i)
                 divement.appendChild(b)
                 break;
