@@ -159,16 +159,15 @@ function decode(base,item) {
     var d = document.createElement("div") 
     d.classList.add("github_blob")
     d.classList.add("github_blob_"+det.type)
-    var str = ""
-    var l = 1
+    var str = atob(base.content)
+    var l = str.slice("\n").length
     switch (det.type) {
         case "txt":
-            var str = atob(base)
-            var l = str.slice("\n").lengt
+  
             break;
         case "img":           
             var y = new Image()
-            y.src = "data:image/"+det.extension+";base64,"+base
+            y.src = "data:image/"+det.extension+";base64,"+base.content
             d.appendChild(y)
             break;
             
