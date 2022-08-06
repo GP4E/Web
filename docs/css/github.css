@@ -541,6 +541,8 @@
 }
 .github_blob .github_blob_det .github_blob_option details {
     display: inline-block !important;
+    order: 2 !important;
+    margin-right: 8px;
 }
 .github_blob .github_blob_det .github_blob_option details summary {
     transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);

@@ -238,6 +238,22 @@ function blobUtils(m) {
     var ul = document.createElement("ul")
     Array.from([
         {
+            ct: "Switch background color",
+            sep:false, 
+            ev:()=>{
+                Array.from(document.getElementsByClassName("github_blob")).forEach(gblob=>{
+                    switch (gbob.style.backgroundColor) {
+                        case "#0d1117":
+                        case "var(--color-canvas-default)":
+                            gblob.style.backgroundColor="f2eee8"
+                            break;
+                        default:
+                            gblob.style.backgroundColor="#0d1117"
+                            break;
+                    } 
+                })
+            }
+        },{
             ct: "View raw",
             sep:false, 
             ev:()=>{}
@@ -285,6 +301,7 @@ function blobUtils(m) {
     svg.appendChild(path)
     sum.appendChild(svg)
     det.appendChild(sum)
+    det.appendChild(ul)
     return det
 }
 
