@@ -573,6 +573,7 @@
     width: 160px;
     padding-top: 4px;
     padding-bottom: 4px;
+    padding-left: 4px;
     margin-top: 2px;
     list-style: none;
     background-color: var(--color-canvas-overlay);
@@ -582,12 +583,22 @@
     box-shadow: var(--color-shadow-large);
     right: 0;
     left: auto;
-    width: 175px;
+    /* width: 175px; */
 }
 .github_blob .github_blob_det .github_blob_option ul li {
     list-style-type: none;
     white-space: nowrap;
     color: var(--color-fg-default);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: block;
+    padding: 4px 8px 4px 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
 }
 .github_blob .github_blob_img {
 
