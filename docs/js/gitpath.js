@@ -159,7 +159,7 @@ function decode(base,item) {
     var d = document.createElement("div") 
     d.classList.add("github_blob")
     d.classList.add("github_blob_"+det.type)
-    var str = atob(base)
+    //var str = atob(base)
     var l = str.slice("\n").length
     switch (det.type) {
         case "txt":
