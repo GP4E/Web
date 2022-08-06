@@ -151,7 +151,7 @@ function blob(f,i) {
     var fi = decode(f,i)
     div.appendChild(createDetailsBlob(fi))
     div.appendChild(fi.element)
-
+    return div
 }
 
 function decode(base,item) {
