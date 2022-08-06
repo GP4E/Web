@@ -159,11 +159,12 @@ function decode(base,item) {
     var d = document.createElement("div") 
     d.classList.add("github_blob")
     d.classList.add("github_blob_"+det.type)
-    //var str = atob(base)
-    var l = str.slice("\n").length
+    var str = ""
+    var l = 1
     switch (det.type) {
         case "txt":
-            
+            var str = atob(base)
+            var l = str.slice("\n").lengt
             break;
         case "img":           
             var y = new Image()
