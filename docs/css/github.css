@@ -532,11 +532,10 @@
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace !important;
     font-size: 12px !important;
     padding-right: 16px !important;
-    order: 2 !important;    flex: auto !important;
+    flex: auto !important;
 }
 .github_blob .github_blob_det .github_blob_option {
     display: flex !important;
-    order: 2 !important;
     flex-grow: 0 !important;
     position: relative;
 }
