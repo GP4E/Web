@@ -149,8 +149,8 @@ function blob(f,i) {
     var div = document.createElement("div")
     div.classList.add("github_blob")
     var fi = decode(f,i)
-    div.appendChild(createDetailsBlob(fi))
     div.appendChild(fi.element)
+    div.appendChild(createDetailsBlob(fi))
     return div
 }
 
