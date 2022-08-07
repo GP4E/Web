@@ -242,7 +242,7 @@ function blobUtils(m) {
         {
             ct: "Switch background color",
             sep:false, 
-            ev:()=>{
+            ev:(EventHandler)=>{
                 Array.from(document.getElementsByClassName("github_blob")).forEach(gblob=>{
                     switch (gblob.style.backgroundColor) {
                         case "#0d1117":
@@ -258,27 +258,27 @@ function blobUtils(m) {
         },{
             ct: "View raw",
             sep:false, 
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },{
             ct: "Copy raw contents", 
             sep:false,
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },{
             ct: "View blame",
             sep:false,
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },{
             ct: "",
             sep:true,
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },{
             ct: "Edit file",
             sep:false,
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },{
             ct: "Open in github.dev",
             sep:false,
-            ev:()=>{}
+            ev:(EventHandler)=>{}
         },
     ]).forEach(x=>{
         var l = document.createElement("li")
@@ -289,7 +289,7 @@ function blobUtils(m) {
             l.style.margin="8px 0"
             l.style.border="1px solid var(--color-border-default)"
         }
-        l.addEventListener("click",y=>x.ev(y))
+        l.addEventListener("click",x.ev)
         ul.appendChild(l)
     })
     var sum = document.createElement("summary")

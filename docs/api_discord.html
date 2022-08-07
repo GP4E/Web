@@ -1,0 +1,26 @@
+<html>
+    <head>
+       <title>GP4E</title> 
+        <link rel="stylesheet" type="text/css" href="./css/menu.css">
+    </head>
+    <body>
+        <!-- #region 
+            //--menu--//
+            //\\\PA\\\//
+            //\\\GE\\\//
+            #endregion -->
+
+        <div class="header">
+            <div class="menu">
+                
+            </div>
+        </div>
+        <!-- #Script -->
+        <script src="https://cdn.jsdelivr.net/npm/discord.js@14.1.2/src/index.min.js"></script>
+        <script src="./js/menu.js"></script>
+        <script>
+            Array.from(document.getElementsByClassName("menu")).forEach(x=>x.innerHTML=getMenu())
+        </script>
+        <!-- #endScript -->
+    </body>
+</html>
