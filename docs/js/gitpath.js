@@ -285,10 +285,7 @@ function blobUtils(m) {
         var l = document.createElement("li")
         l.innerHTML=x.ct
         if (x.sep) {
-            l.style.display="block"
-            l.style.height=0
-            l.style.margin="8px 0"
-            l.style.border="1px solid var(--color-border-default)"
+            l.classList.add("github_utils_hseparator")
         }
         l.addEventListener("click",x.ev)
         ul.appendChild(l)
@@ -314,7 +311,7 @@ function createDetailsBlob(m) {
     divdet.classList.add("github_blob_det")
     var s = document.createElement("span")
     var lt = ()=>{if (m.l==1) {return "line"} else return "lines"}
-    s.innerHTML=m.lines+" "+lt()+'<span class="github_utils_separator"></span>'+parseSize(m.item.size)
+    s.innerHTML=m.lines+" "+lt()+'<span class="github_utils_vseparator"></span>'+parseSize(m.item.size)
     divdet.appendChild(s)
     divdet.appendChild(blobUtils(m))
     return divdet
