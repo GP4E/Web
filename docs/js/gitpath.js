@@ -247,7 +247,7 @@ function blobUtils(m) {
                     switch (gblob.style.backgroundColor) {
                         case "#0d1117":
                         case "var(--color-canvas-default)":
-                            gblob.style.backgroundColor="f2eee8"
+                            gblob.style.backgroundColor="#f2eee8"
                             break;
                         default:
                             gblob.style.backgroundColor="#0d1117"

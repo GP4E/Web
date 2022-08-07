@@ -568,9 +568,7 @@
 .github_blob .github_blob_det .github_blob_option ul {
     position: absolute;
     top: 100%;
-    left: 0;
     z-index: 100;
-    width: 160px;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 4px;
