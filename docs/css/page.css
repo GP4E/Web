@@ -1,8 +1,4 @@
-*::selection {
-    color: none;
-    background: transparent;
-    text-decoration: underline currentColor solid;
-  }
+
 .page {
     display: flex;
 }

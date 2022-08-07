@@ -1,4 +1,9 @@
 * {box-sizing: border-box;}
+*::selection {
+    color: none;
+    background: transparent;
+    text-decoration: underline currentColor solid;
+  }
 .github_path_tree::-webkit-scrollbar {
     display: none;
 }
@@ -508,7 +513,7 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 6px;
-    margin-top: 16px !important;
+    /* margin-top: 16px !important; */
     display: block;
 }
 .github_blob .github_blob_det {
@@ -527,6 +532,9 @@
     flex-shrink: 0 !important;
     flex-shrink: 0 !important;
     align-items: center !important;
+    position: sticky;
+    top: 0px;
+    color: var(--color-fg-default)
 }
 .github_blob .github_blob_det span {
     font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace !important;
