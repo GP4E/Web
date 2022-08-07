@@ -12,6 +12,10 @@
     display: block;
     overflow-y: scroll;
     background-color: var(--color-canvas-default);
+    border-color: var(--color-border-default);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
     /* COLORS */
     --color-icon: #8b949e;
     --color-canvas-default-transparent: rgba(13,17,23,0);
@@ -523,8 +527,8 @@
     border-color: var(--color-border-default);
     border-style: solid;
     border-width: 1px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
     display: flex !important;
     padding-top: 8px !important;
     padding-bottom: 8px !important;
