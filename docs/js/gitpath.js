@@ -173,7 +173,7 @@ function decode(base,item) {
                 lc.innerHTML=v
                 var tr = document.createElement("tr")
                 tr.appendChild(ln)
-                tr.appendChild(ln)
+                tr.appendChild(lc)
                 y.appendChild(tr)
             })
             d.appendChild(y)
