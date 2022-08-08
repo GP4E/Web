@@ -644,3 +644,43 @@
     margin: 8px -1px;
     border: 1px solid var(--color-border-default);
 }
+.github_blob .github_blob_txt_table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    display: table;
+    text-indent: initial;
+    border-color: grey;
+    tab-size: 4;
+
+}
+.github_blob .github_blob_txt_table .github_blob_txt_table_line_num {
+    position: relative;
+    width: 1%;
+    min-width: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--color-fg-subtle);
+    text-align: right;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.github_blob .github_blob_txt_table .github_blob_txt_table_line_ctn {
+    overflow: visible;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    font-size: 12px;
+    color: var(--color-fg-default);
+    word-wrap: normal;
+    white-space: pre;
+    position: relative;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 20px;
+    vertical-align: top;
+}

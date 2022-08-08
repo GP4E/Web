@@ -165,10 +165,12 @@ function decode(base,item) {
     switch (det.type) {
         case "txt":
             var y = document.createElement("table")
-            y.classList.add("github_blob_txt")
+            y.classList.add("github_blob_txt_table")
             Array.from(ls).forEach((v,i)=>{
                 var ln = document.createElement("td")
+                ln.classList.add("github_blob_txt_table_line_num")
                 var lc = document.createElement("td")
+                lc.classList.add("github_blob_txt_table_line_ctn")
                 ln.innerHTML=(i+1)
                 lc.innerHTML=v
                 var tr = document.createElement("tr")
