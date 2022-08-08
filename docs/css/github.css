@@ -1,5 +1,5 @@
 * {box-sizing: border-box;}
-*::selection {
+*:not(.canselect):not(.canselect *)::selection {
     color: none;
     background: transparent;
     text-decoration: underline currentColor solid;
@@ -582,7 +582,7 @@
 }
 .github_blob .github_blob_det .github_blob_option ul {
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     z-index: 100;
     padding-top: 4px;
     padding-bottom: 4px;

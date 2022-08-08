@@ -276,6 +276,15 @@ function blobUtils(m) {
             sep:false, 
             ev:(EventHandler)=>{}
         },{
+            ct: "Allow selection",
+            sep:false, 
+            ev:(EventHandler)=>{
+                var x = document.getElementsByClassName("page")[0]
+                var att = "canselect"
+                if (x.classList.contains(att)) x.classList.remove(att)
+                else x.classList.add(att)
+            }
+        },{
             ct: "Copy raw contents", 
             sep:false,
             ev:(EventHandler)=>{}
