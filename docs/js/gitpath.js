@@ -160,7 +160,7 @@ function decode(base,item) {
     d.classList.add("github_blob")
     d.classList.add("github_blob_"+det.type)
     var str = atob(base.content)
-    var ls = str.slice("\n")
+    var ls = str.split("\n")
     var l = ls.length
     switch (det.type) {
         case "txt":
