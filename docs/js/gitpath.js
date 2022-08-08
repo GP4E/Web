@@ -160,10 +160,23 @@ function decode(base,item) {
     d.classList.add("github_blob")
     d.classList.add("github_blob_"+det.type)
     var str = atob(base.content)
-    var l = str.slice("\n").length
+    var ls = str.slice("\n")
+    var l = ls.length
     switch (det.type) {
         case "txt":
-  
+            var y = document.createElement("table")
+            y.classList.add("github_blob_txt")
+            Array.from(ls).forEach((v,i)=>{
+                var ln = document.createElement("td")
+                var lc = document.createElement("td")
+                ln.innerHTML=(i+1)
+                lc.innerHTML=v
+                var tr = document.createElement("tr")
+                tr.appendChild(ln)
+                tr.appendChild(ln)
+                y.appendChild(tr)
+            })
+            d.appendChild(y)
             break;
         case "img":           
             var y = new Image()
@@ -213,11 +226,11 @@ function detailsbase64(t) {
             break;
         //Text
         case 'Z':
-            res.type='cmd'
+            res.type='txt'
             res.extension='bat'
             break;
         case 'L':
-            res.type='info'
+            res.type='txt'
             res.extension='gitignore'
             break;
         //Autocad
@@ -225,7 +238,7 @@ function detailsbase64(t) {
             res.type="autocad"
             res.extension="dwg"
         default:
-            res.type="text"
+            res.type="txt"
             res.extension='txt';
             alert("Error: "+"Base64 type unknown ("+first+")")
             break;
