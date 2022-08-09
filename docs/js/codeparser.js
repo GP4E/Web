@@ -17,7 +17,7 @@ var json = {
 function parse(string, lang) {
     var html = string+"";
     var lj = json.language[lang]
-    if (!lj) {
+    if (lj!=null&&lj!=undefined) {
         var cls = Object.keys(lj)
         cls.forEach((c)=>{
             var regex = new RegExp(lj[c])
