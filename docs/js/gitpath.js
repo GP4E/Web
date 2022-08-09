@@ -246,7 +246,7 @@ function detailsbase64(t) {
             res.extension="dwg"
         default:
             res.type="txt"
-            res.extension='txt';
+            res.extension='js';
             alert("Error: "+"Base64 type unknown ("+first+")")
             break;
     }
