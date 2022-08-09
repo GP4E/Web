@@ -1,5 +1,5 @@
 async function setupGitGraphicsPage(element) {
-    document.addEventListener("github_navigate_to",async (e)=>{
+    document.addEventListener("github_navigate_to", async (e)=>{
         var i = e.detail
         console.log("i: ", i)
         document.getElementsByClassName("page")[0].innerHTML=""
@@ -163,6 +163,7 @@ function decode(base,item) {
     var ls = str.split("\n")
     var l = ls.length
     switch (det.type) {
+        case "code":
         case "txt":
             var y = document.createElement("table")
             y.classList.add("github_blob_txt_table")
@@ -172,7 +173,7 @@ function decode(base,item) {
                 var lc = document.createElement("td")
                 lc.classList.add("github_blob_txt_table_line_ctn")
                 ln.innerHTML=(i+1)
-                lc.innerHTML=v
+                lc.innerHTML=parse(v,det.extension)
                 var tr = document.createElement("tr")
                 tr.appendChild(ln)
                 tr.appendChild(lc)
@@ -235,6 +236,10 @@ function detailsbase64(t) {
             res.type='txt'
             res.extension='gitignore'
             break;
+        //code
+        case '7':
+            res.type='code'
+            res.extension='js'
         //Autocad
         case 'Q':
             res.type="autocad"
