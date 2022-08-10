@@ -3,7 +3,7 @@ function getMenu() {
         {name: "Home", href: "./home.html"},
         {name: "Game", Sub: ["General","Graphics","Story","Script"], href: "./game.html"},
         {name: "Api", Sub: ["Discord"], href:"./api.html"},
-        {name: "Web", href: "./web.html"}
+        {name: "Web", href: "./web.html"},
         {name: "Login", id: "lg", href: "./login.html", style: "margin-left: auto"},
     ] 
     var t = "a"
