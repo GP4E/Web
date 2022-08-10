@@ -180,13 +180,27 @@ function decode(base,item) {
                 y.appendChild(tr)
             })
             d.appendChild(y)
+            // var md = "javascript"
+            // switch (det.extension) {
+            //     case "js":
+            //         md = "javascript"
+            //     default:
+            //         md = "javascript"
+            // }
+            // d.addEventListener("load",(e)=>{
+            //     CodeMirror(e.target, {
+            //         lineNumbers: true,
+            //         tabSize: 4,
+            //         value: str,
+            //         mode: md
+            //     })
+            // })
             break;
         case "img":           
             var y = new Image()
             y.src = "data:image/"+det.extension+";base64,"+base.content
             d.appendChild(y)
             break;
-            
         default:
             break;
     }

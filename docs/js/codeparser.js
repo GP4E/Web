@@ -21,8 +21,10 @@ function parse(string, lang) {
         var cls = Object.keys(lj)
         cls.forEach((c)=>{
             var regex = new RegExp(lj[c])
-            html = html.replace(regex,'<span style="color: #'+c.slice(1)+'">$&</span>')
+            html = html.replace(regex,'&span#'+c.slice(1)+'";$&&end;')
         })
+        console.log(html)
+        //html.match()
         return html
     } else return string
 }
