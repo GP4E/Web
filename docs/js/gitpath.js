@@ -82,14 +82,15 @@ async function setupGitWebPage(element) {
     element.innerHTML=""
     element.appendChild(trhtml)
 }
-async function sha(rep) {
-    var lastcommit = lastcommit(rep)
-    return lastcommit.sha
-}
 async function lastcommit(rep) {
     var x = await req("repos/GP4E/"+rep+"/branches/main")
     return x.commit
 }
+async function sha(rep) {
+var lct = await lastcommit(rep)
+    return lct.sha
+}
+
 async function req(gurl, callback_success) {
     var t = window.localStorage.getItem("github_token")
     return (await $.ajax({
