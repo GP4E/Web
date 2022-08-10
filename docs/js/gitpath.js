@@ -265,7 +265,7 @@ function decode(base,item) {
             break;
         case "img":           
             var y = new Image()
-            y.src = "data:image/"+det.extension+";base64,"+base.content
+            y.src = "data:"+det.mime+";base64,"+base.content
             d.appendChild(y)
             break;
         default:
@@ -280,58 +280,49 @@ function decode(base,item) {
 }
 function detailsbase64(t) {
     console.log(t)
-    var res = {}
-    var c = t.content
-    var first = (c+"").charAt(0)
-    switch (first) {
-        case '/':
-            res.type="img"
-            res.extension='jpeg';
-            break;
-        case 'i':
-            res.type="img"
-            res.extension='png';
-            break;
-        case 'R':
-            res.type="img"
-            res.extension='gif';
-            break;
-        case 'U':
-            res.type="img"
-            res.extension='webp';
-            break;
-        case 'J':
-            res.type='img'
-            res.extension='pdf';
-            break;
-        case 'O':
-            res.type='img'
-            res.extension='psd';
-            break;
-        //Text
-        case 'Z':
-            res.type='txt'
-            res.extension='bat'
-            break;
-        case 'L':
-            res.type='txt'
-            res.extension='gitignore'
-            break;
-        //code
-        case '7':
-            res.type='code'
-            res.extension='js'
-        //Autocad
-        case 'Q':
-            res.type="autocad"
-            res.extension="dwg"
-        default:
-            res.type="txt"
-            res.extension='js';
-            alert("Error: "+"Base64 type unknown ("+first+")")
-            break;
+    var b64 = t.content
+    var signatures = {
+        "JVBERi0": {
+            mime: "application/pdf",
+            type: "txt",
+            extension: "pdf"
+        },
+        "R0lGODdh": {
+            mime: "image/gif",
+            type: "img",
+            extension: "gif"
+        },
+        "R0lGODlh": {
+            mime: "image/gif",
+            type: "img",
+            extension: "gif"
+        },
+        "iVBORw0KGgo": {
+            mime: "image/png",
+            type: "img",
+            extension: "png"
+        },
+        "/9j/": {
+            mime: "image/jpg",
+            type: "img",
+            extension: "jpg"
+        },
+        "8BPS": {
+            mime: "image/vnd.adobe.photoshop",
+            type: "img",
+            extension: "psd"
+        },
+    };
+    for (var s in signatures) {
+        if (b64.indexOf(s) === 0) {
+            return signatures[s];
+        }
     }
-    return res
+    return {
+        type: "txt",
+        extension: "txt",
+        mime: ""
+    }
 }
 
 function blobUtils(m) {
