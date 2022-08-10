@@ -10,8 +10,8 @@ async function setupGitGraphicsPage(element) {
         switch (i.type) {
             case "tree":
                 analyze([{
-                    "sha": "ea035f6f977e1d3c86623e7c2522592c277e2872",
-                    "url": "https://api.github.com/repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",
+                    "sha": (await sha("GP4EGame")),
+                    "url": "https://api.github.com/repos/GP4E/GP4EGame/git/trees/"+(await sha("GP4EGame")),
                     "path": "Home",
                     "type": "home",
                     "mode": "040000",
@@ -20,7 +20,7 @@ async function setupGitGraphicsPage(element) {
                 analyze(tree.tree).forEach(lul=>div.appendChild(lul))
                 break;
             case "home":
-                var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
+                var tree = await req("repos/GP4E/GP4EGame/git/trees/"+(await sha("GP4EGame")),(x)=>{console.log(x)})
                 analyze(tree.tree).forEach(eue=>div.appendChild(eue))
                 break;
             case "blob":
@@ -33,14 +33,63 @@ async function setupGitGraphicsPage(element) {
         document.getElementsByClassName("page")[0].appendChild(div)
     })
     element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
-    var tree = await req("repos/GP4E/GP4EGame/git/trees/ea035f6f977e1d3c86623e7c2522592c277e2872",(x)=>{console.log(x)})
+    var tree = await req("repos/GP4E/GP4EGame/git/trees/"+(await sha("GP4EGame")),(x)=>{console.log(x)})
     var trhtml = document.createElement("div")
     analyze(tree.tree).forEach(e=>trhtml.appendChild(e))
     trhtml.classList.add("github_path_tree")
     element.innerHTML=""
     element.appendChild(trhtml)
 }
+async function setupGitWebPage(element) {
+    document.addEventListener("github_navigate_to", async (e)=>{
+        var i = e.detail
+        console.log("i: ", i)
+        document.getElementsByClassName("page")[0].innerHTML=""
+        var div = document.createElement("div")
+        div.classList.add("github_path_tree")
+        
 
+        switch (i.type) {
+            case "tree":
+                analyze([{
+                    "sha": (await sha("Web")),
+                    "url": "https://api.github.com/repos/GP4E/Web/git/trees/"+(await sha("Web")),
+                    "path": "Home",
+                    "type": "home",
+                    "mode": "040000",
+                }]).forEach(x=>{div.appendChild(x);console.log(x)})
+                var tree = await req("repos/GP4E/Web/git/trees/"+i.sha,(x)=>{console.log(x)})
+                analyze(tree.tree).forEach(lul=>div.appendChild(lul))
+                break;
+            case "home":
+                var tree = await req("repos/GP4E/Web/git/trees/"+(await sha("Web")),(x)=>{console.log(x)})
+                analyze(tree.tree).forEach(eue=>div.appendChild(eue))
+                break;
+            case "blob":
+                console.log(i.type)
+                var file = await req("repos/GP4E/Web/git/blobs/"+i.sha,(x)=>console.log(x))
+                var b = blob(file,i)
+                div.appendChild(b)
+                break;
+        }
+        document.getElementsByClassName("page")[0].appendChild(div)
+    })
+    element.innerHTML = '<span class="awaitloading">Stiamo caricando la pagina.</span>'
+    var tree = await req("repos/GP4E/Web/git/trees/"+(await sha("Web")),(x)=>{console.log(x)})
+    var trhtml = document.createElement("div")
+    analyze(tree.tree).forEach(e=>trhtml.appendChild(e))
+    trhtml.classList.add("github_path_tree")
+    element.innerHTML=""
+    element.appendChild(trhtml)
+}
+async function sha(rep) {
+    var lastcommit = lastcommit(rep)
+    return lastcommit.sha
+}
+async function lastcommit(rep) {
+    var x = await req("repos/GP4E/"+rep+"/branches/main")
+    return x.commit
+}
 async function req(gurl, callback_success) {
     var t = window.localStorage.getItem("github_token")
     return (await $.ajax({

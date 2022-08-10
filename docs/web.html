@@ -1,0 +1,35 @@
+<html>
+    <head>
+       <title>GP4E</title> 
+        <link rel="stylesheet" type="text/css" href="./css/menu.css">
+        <link rel="stylesheet" type="text/css" href="./css/github.css">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/codemirror@6.65.7/lib/codemirror.min.js"></script> -->
+    </head>
+    <body>
+        <!-- #region 
+            //--menu--//
+            //\\\PA\\\//
+            //\\\GE\\\//
+            #endregion -->
+
+        <div class="header">
+            <div class="menu">
+                
+            </div>
+        </div>
+        <div class="page">
+            
+        </div>
+        <!-- #Script -->
+        <script src="./js/utils.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="./js/menu.js"></script>
+        <script src="./js/codeparser.js"></script>
+        <script src="./js/gitpath.js"></script>
+        <script>
+            Array.from(document.getElementsByClassName("menu")).forEach(x=>x.innerHTML=getMenu())
+            setupGitWebPage(document.getElementsByClassName("page")[0])
+        </script>
+        <!-- #endScript -->
+    </body>
+</html>
