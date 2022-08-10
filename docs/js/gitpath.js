@@ -170,13 +170,13 @@ function decode(base,item) {
                 var x = e.detail
                 var y = e.target
                 y.innerHTML("")
-                Array.from(ls).forEach((v,i)=>{
+                Array.from(x.content.split("\n")).forEach((v,i)=>{
                     var ln = document.createElement("td")
                     ln.classList.add("github_blob_txt_table_line_num")
                     var lc = document.createElement("td")
                     lc.classList.add("github_blob_txt_table_line_ctn")
                     ln.innerHTML=(i+1)
-                    lc.innerHTML=parse(v,det.extension)
+                    lc.innerHTML=parse(v,x.extension)
                     var tr = document.createElement("tr")
                     tr.appendChild(ln)
                     tr.appendChild(lc)
