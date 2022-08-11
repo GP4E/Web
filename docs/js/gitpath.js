@@ -312,6 +312,46 @@ function detailsbase64(t) {
             type: "img",
             extension: "psd"
         },
+        "RIFF????WAVE": {
+            mime: "",
+            extension: "wav",
+            type: "audio"
+        },
+        "RIFF????AVI␠": {
+            mime: "",
+            extension: "avi",
+            type: "audio"
+        },
+        "ÿû": {
+            mime: "",
+            extension: "mp3",
+            type: "audio"
+        },
+        "ÿó": {
+            mime: "",
+            extension: "mp3",
+            type: "audio"
+        },
+        "ÿò": {
+            mime: "",
+            extension: "mp3",
+            type: "audio"
+        },
+        "ID3": {
+            mime: "",
+            extension: "mp3",
+            type: "audio"
+        },
+        "MThd": {
+            mime: "",
+            extension: "midi",
+            type: "audio"
+        },
+        "ÐÏ␑à¡±␚á": {
+            mime:"",
+            extends: "doc",
+            type: "txt"
+        }
     };
     for (var s in signatures) {
         if (b64.indexOf(s) === 0) {
