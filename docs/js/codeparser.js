@@ -17,7 +17,7 @@ var json = {
 function parse(string, lang) {
     var html = string+"";
     var lj = json.language[lang]
-    if (lj!=null&&lj!=undefined) {
+    try {
         var cls = Object.keys(lj)
         cls.forEach((c)=>{
             var regex = new RegExp(lj[c])
@@ -30,5 +30,7 @@ function parse(string, lang) {
         
         //html.match()
         return html
-    } else return string
+    } catch {
+        return string
+    }
 }
