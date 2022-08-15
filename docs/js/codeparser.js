@@ -15,6 +15,7 @@ var json = {
 }
 
 function parse(string, lang) {
+    lang="js"
     var html = string+"";
     var lj = json.language[lang]
     try {
